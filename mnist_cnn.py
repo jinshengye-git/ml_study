@@ -1,3 +1,5 @@
+#this is for Python3.5
+
 import keras
 from keras.datasets import mnist
 from keras.models import Sequential
@@ -56,10 +58,6 @@ model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(num_classes, activation='softmax'))
 
-#to print the model pic....
-plot_model(model, to_file='model.png')
-
-
 
 model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=keras.optimizers.Adadelta(),
@@ -71,5 +69,9 @@ model.fit(x_train, y_train,
           verbose=1,
           validation_data=(x_test, y_test))
 score = model.evaluate(x_test, y_test, verbose=0)
+
+#to print the model pic....
+plot_model(model, to_file='model.png')
+
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
